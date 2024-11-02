@@ -8,10 +8,11 @@ uvicorn
 sqlalchemy
 
 # PostgreSQL driver
-psycopg
+psycopg[binary]
 
 # Pydantic for data validation
 pydantic
+pydantic_settings
 
 # Redis for caching
 redis

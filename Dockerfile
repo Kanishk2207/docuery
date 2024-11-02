@@ -1,6 +1,7 @@
 # Use the official Python image as a base image
 FROM python:3.9-slim
 
+RUN apt-get update && apt-get install libpq-dev build-essential -y
 # Set the working directory in the container
 WORKDIR /app
 
@@ -16,8 +17,7 @@ COPY . .
 # Expose the port FastAPI will run on
 EXPOSE 8000
 
-COPY credentials.json /app/credentials.json
-ENV GOOGLE_APPLICATION_CREDENTIALS="/app/credentials.json"
+ENV GOOGLE_APPLICATION_CREDENTIALS="/app/app/external/credentials.json"
 # Set environment variables for Google Cloud Storage
 
 # Copy Google Cloud credentials if needed
