@@ -1,0 +1,47 @@
+# FastAPI for building the API
+fastapi
+
+# Uvicorn as the ASGI server
+uvicorn
+
+# SQLAlchemy for ORM
+sqlalchemy
+
+# PostgreSQL driver
+psycopg
+
+# Pydantic for data validation
+pydantic
+
+# Redis for caching
+redis
+
+# Elasticsearch client
+elasticsearch
+
+# Google Cloud Storage client
+google-cloud-storage
+
+# LangChain for NLP processing
+langchain
+
+# Unstructured.io for document parsing
+unstructured
+
+# Additional NLP libraries
+numpy
+scipy
+scikit-learn
+
+# Python-dotenv for environment variable management
+python-dotenv
+
+# Passlib for password hashing
+passlib[bcrypt]
+
+# Requests for HTTP requests
+requests
+
+# Logging and structured logging
+structlog
+loguru
