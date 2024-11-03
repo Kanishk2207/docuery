@@ -1,46 +1,52 @@
 -- Create users table
 CREATE TABLE IF NOT EXISTS users (
-    id SERIAL PRIMARY KEY,
+    user_id VARCHAR(50) PRIMARY KEY,
     username VARCHAR(50) UNIQUE NOT NULL,
     email VARCHAR(100) UNIQUE NOT NULL,
     hashed_password VARCHAR(255) NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    created_at INTEGER,
+    updated_at INTEGER
 );
 
 -- Create documents table
 CREATE TABLE IF NOT EXISTS documents (
-    id SERIAL PRIMARY KEY,
-    user_id INTEGER NOT NULL,
+    document_id VARCHAR(50) PRIMARY KEY,
+    user_id VARCHAR(50) NOT NULL,
     title VARCHAR(100) NOT NULL,
     file_path VARCHAR(255) NOT NULL,
     file_type VARCHAR(10) NOT NULL,
-    uploaded_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    parsed_at TIMESTAMP,
+    uploaded_at INTEGER,
+    updated_at INTEGER,
+    parsed_at INTEGER,
     status VARCHAR(50) DEFAULT 'uploaded',
-    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+
+    FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE
 );
 
 -- Create document_metadata table
 CREATE TABLE IF NOT EXISTS document_metadata (
-    id SERIAL PRIMARY KEY,
-    document_id INTEGER NOT NULL,
+    document_metadata_id VARCHAR(50) PRIMARY KEY,
+    document_id VARCHAR(50) NOT NULL,
     key VARCHAR(100) NOT NULL,
     value TEXT NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (document_id) REFERENCES documents(id) ON DELETE CASCADE
+    created_at INTEGER,
+    updated_at INTEGER,
+
+    FOREIGN KEY (document_id) REFERENCES documents(document_id) ON DELETE CASCADE
 );
 
 -- Create queries table
 CREATE TABLE IF NOT EXISTS queries (
-    id SERIAL PRIMARY KEY,
-    user_id INTEGER NOT NULL,
-    document_id INTEGER,
+    query_id VARCHAR(50) PRIMARY KEY,
+    user_id VARCHAR(50) NOT NULL,
+    document_id VARCHAR(50),
     query_text TEXT NOT NULL,
     response_text TEXT,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
-    FOREIGN KEY (document_id) REFERENCES documents(id) ON DELETE SET NULL
+    created_at INTEGER ,
+    updated_at INTEGER,
+
+    FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE,
+    FOREIGN KEY (document_id) REFERENCES documents(document_id) ON DELETE SET NULL
 );
 
 -- Indexes for faster querying

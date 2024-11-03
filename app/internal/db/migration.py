@@ -7,6 +7,7 @@ async def run_migrations(db: AsyncSession, script_path: str):
     Execute SQL migration scripts.
     """
     if not os.path.isfile(script_path):
+        open(script_path, "+wb")
         raise FileNotFoundError(f"Migration script {script_path} does not exist.")
 
     with open(script_path, 'r') as f:

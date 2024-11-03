@@ -46,6 +46,6 @@ fi
 
 # Run the service container
 echo "Starting document ai container"
-docker run -it --network=document-ai-net -p 8081:8080 --restart always \
+docker run -it --network=document-ai-net -p 8002:8000 --restart always \
 --name $CONTAINER_NAME -v $DIR:/app \
---env-file .env $IMAGE_NAME:$IMAGE_TAG /bin/bash
+--env-file .env $IMAGE_NAME:$IMAGE_TAG bash

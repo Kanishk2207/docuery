@@ -13,6 +13,7 @@ psycopg[binary]
 # Pydantic for data validation
 pydantic
 pydantic_settings
+pydantic[email]
 
 # Redis for caching
 redis
@@ -39,6 +40,7 @@ python-dotenv
 
 # Passlib for password hashing
 passlib[bcrypt]
+pyjwt
 
 # Requests for HTTP requests
 requests

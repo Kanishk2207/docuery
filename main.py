@@ -1,12 +1,12 @@
 from fastapi import FastAPI
 from contextlib import asynccontextmanager
 import uvicorn
-import logging
 
 from app.internal.db.migration import run_migrations
 from app.internal.db.postgres import get_db
 from app.config.config import settings
 
+from app.api.auth.views import router as auth_router
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -20,15 +20,18 @@ async def lifespan(app: FastAPI):
 app = FastAPI(lifespan=lifespan)
 
 
-app.get("/health")
-def health_check():
+@app.get("/health")
+async def health_check():
     return {"message": "App is healthy"}
+
+
+app.include_router(auth_router)
 
 
 if __name__ == "__main__":
     uvicorn.run(
         "main:app",
-        host="127.0.0.1",
+        host="0.0.0.0",
         port=8000,
         reload=True
     )
