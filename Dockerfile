@@ -17,7 +17,7 @@ COPY . .
 # Expose the port FastAPI will run on
 EXPOSE 8000
 
-ENV GOOGLE_APPLICATION_CREDENTIALS="/app/app/external/credentials.json"
+ENV GOOGLE_APPLICATION_CREDENTIALS="/app/app/external/gcp/credentials.json"
 # Set environment variables for Google Cloud Storage
 
 # Copy Google Cloud credentials if needed

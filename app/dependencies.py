@@ -1,7 +1,7 @@
 from fastapi import Request, HTTPException
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 
-from utils import jwt_utils
+from app.utils import jwt_utils
 
 
 class AuthValidator(HTTPBearer):

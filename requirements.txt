@@ -48,3 +48,5 @@ requests
 # Logging and structured logging
 structlog
 loguru
+
+python-multipart

@@ -9,7 +9,7 @@ algorithm = "HS256"
 
 
 def generate_auth_token(user: User):
-    token_expiry = int(time.time()) + settings.ACCESS_TOKEN_EXPIRE
+    token_expiry = int(time.time()) + int(settings.ACCESS_TOKEN_EXPIRE)
     auth_token = jwt.encode(
         payload={
             "user_id": user.user_id,

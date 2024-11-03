@@ -44,7 +44,8 @@ async def register_user(username: str, email: str, password: str):
     :param password: New user's password
     :return: Access token for the newly registered user
     """
-    # Check if user with the provided email already exists
+    global current_time
+
     async with get_db() as db:
         existing_user = await crud.get_user_by_email(db=db, email=email)
 

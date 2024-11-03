@@ -7,6 +7,8 @@ from app.internal.db.postgres import get_db
 from app.config.config import settings
 
 from app.api.auth.views import router as auth_router
+from app.api.document.views import router as document_router
+
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -26,6 +28,7 @@ async def health_check():
 
 
 app.include_router(auth_router)
+app.include_router(document_router)
 
 
 if __name__ == "__main__":
